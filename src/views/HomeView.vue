@@ -7,17 +7,15 @@
   const { dataLst,dataL,totalNum } = storeToRefs(store);
   const value = ref(0);
   const addToCart = (item) => {
-  const index = dataL.value.findIndex((product) => product.id === item.id);
-  if (index !== -1) {
-    // 如果商品已经存在于购物车中，增加其数量
+  const index = dataL.value.findIndex((e) => e.id === item.id);
+    if (index !== -1) {
     dataL.value[index].num += 1;
   } else {
-    // 如果商品不在购物车中，添加到购物车并将数量设置为1
     const newItem = { ...item, num: 1 };
     dataL.value.push(newItem);
   }
-  store.totalNum = dataL.value.reduce((total, product) => total + product.num, 0);
-    console.log()
+  store.totalNum = dataL.value.reduce((total, e) => total + e.num, 0);
+    // console.log()
 };
 </script>
 

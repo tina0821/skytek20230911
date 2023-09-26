@@ -9,13 +9,14 @@ const { dataLst,dataL,totalNum } = storeToRefs(store);
 // console.log(dataLst.value);
   
 const value = ref(0);
-  const deleteItem = (item) => {
-    const index = dataL.value.indexOf(item);
-    if (index !== -1) {
-      dataL.value.splice(index, 1);
-      store.totalNum = dataL.value.length;
-    }
-  };
+const deleteItem = (item) => {
+  const index = dataL.value.findIndex((e) => e === item);
+  if (index !== -1) {
+    dataL.value.splice(index, 1);
+    store.totalNum = dataL.value.reduce((total, e) => total + e.num, 0);
+  }
+};
+
 
 </script>
 
